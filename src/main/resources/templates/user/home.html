@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <form th:action="@{/logout}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="registration"
+                type="Submit">Logout
+        </button>
+    </form>
+    <form th:action="@{/user/addTask}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="addTask"
+                type="Submit">Add a Task
+        </button>
+    </form>
+    <form th:action="@{/user/updateTask}" method="get">
+        <label for="taskid" >Enter Task Id you want to Update:</label>
+        <input type="number" id="taskid" name="taskid" required>
+        <input type="Submit" value="Submit">
+    </form>
+    <form th:action="@{/user/deleteTask}" method="get">
+        <label for="taskid2" >Enter Task Id you want to Delete:</label>
+        <input type="number" id="taskid2" name="taskid2" required>
+        <input type="Submit" value="Submit">
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span th:text="${userName}"></span>
+            </div>
+
+            <div class="panel-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th> Task Id </th>
+                            <th> Name of Task </th>
+                            <th> Description </th>
+                            <th> Email </th>
+                            <th> Start Date </th>
+                            <th> End Date </th>
+                            <th> Severity </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${listOfTasks?.empty}">
+                            <td colspan="2"> No Tasks Available </td>
+                        </tr>
+                        <tr th:each="task : ${listOfTasks}">
+                            <td><span th:text="${task?.id}"> Id</span></td>
+                            <td><span th:text="${task?.taskName}"> Name of Task </span></td>
+                            <td><span th:text="${task?.description}"> Description </span></td>
+                            <td><span th:text="${task?.email}"> Email </span></td>
+                            <td><span th:text="${task?.startDate}"> Start Date </span></td>
+                            <td><span th:text="${task?.endDate}"> End Date </span></td>
+                            <td><span th:text="${task?.severity}"> Severity </span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

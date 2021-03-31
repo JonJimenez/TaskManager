@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Update Task Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <form th:action="home" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="registration"
+                type="Submit">Home
+        </button>
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>Update Task<h2>
+            </div>
+            <div class="panel-body">
+                <form action="#" th:action="@{updateTask}" method ="post" role="form">
+                    <label for="taskName" >TaskId:</label>
+                    <input id="taskName" type="text" th:name="taskId" th:value="${task?.id}" readonly></br>
+
+                    <label for="userid">UserId:</label>
+                    <input id ="userid" type="text" th:name ="userId" th:value="${task?.userId}" readonly></br>
+
+                    <label for="email">Email:</label>
+                    <input id ="email" type="email" th:name ="email" th:value="${task?.email}" readonly></br>
+
+                    <label for="taskName" >Name of Task:</label>
+                    <input id="taskName" type="text" th:name="taskName" th:value="${task?.taskName}" required ></br>
+
+                    <label for="startDate">Start Date:</label>
+                    <input id="startDate" type="date" th:name="startDate" th:value="${task?.startDate}" required ></br>
+
+                    <label for="endDate">End Date:</label>
+                    <input id="endDate" type="date" th:name="endDate" th:value="${task?.endDate}" required ></br>
+
+                    <label for="severity">Severity:</label>
+                    <select name="severity" id="severity" th:name="severity" th:value="${task?.severity}" required>
+                        <option value="low">Low</option>
+                          <option value="medium">Medium</option>
+                          <option value="high">High</option>
+                      </select>
+                    </br>
+                    <label for="description">Description:</label>
+                    <input id="description" type="text"th:name="description" th:value="${task?.description}" required></br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

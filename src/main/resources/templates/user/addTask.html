@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>AddTask Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+ 
+    <form th:action="@{/user/home}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="home"
+                type="Submit">Home
+        </button>
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 >Add a Task</h2>
+            </div>
+            <div class="panel-body">
+                <form th:action="@{addTask}" method ="post">
+                    <label for="userid">UserId:</label>
+                    <input id ="userid" type="text" th:value="${user?.id}" readonly></br>
+
+                    <label for="email">Email:</label>
+                    <input id ="email" type="email" th:value="${user?.email}" readonly></br>
+
+                    <label for="taskName" >Name of Task:</label>
+                    <input id="taskName" type="text" th:name="taskName"required></br>
+
+                    <label for="startDate">Start Date:</label>
+                    <input id="startDate" type="date" th:name="startDate"required ></br>
+
+                    <label for="endDate">End Date:</label>
+                    <input id="endDate" type="date" th:name="endDate" required ></br>
+
+                    <label for="severity">Severity:</label>
+                    <select name="severity" id="severity" th:name="severity"required>
+                        <option value="low">Low</option>
+                          <option value="medium">Medium</option>
+                          <option value="high">High</option>
+                      </select>
+                    </br>
+                    <label for="description">Description:</label>
+                    <input id="description" type="text"th:name="description" required></br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
