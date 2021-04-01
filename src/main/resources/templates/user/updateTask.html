@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function redirect() {
+            window.location.href="home";
+        }
+    </script>
 </head>
 
 <body>
@@ -25,7 +30,7 @@
                 <h2>Update Task<h2>
             </div>
             <div class="panel-body">
-                <form action="#" th:action="@{updateTask}" method ="post" role="form">
+                <form  action="updateTask" method ="post" role="form">
                     <label for="taskName" >TaskId:</label>
                     <input id="taskName" type="text" th:name="taskId" th:value="${task?.id}" readonly></br>
 

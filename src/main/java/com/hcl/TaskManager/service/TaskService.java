@@ -1,14 +1,11 @@
 package com.hcl.TaskManager.service;
 
 import com.hcl.TaskManager.model.Task;
+import com.hcl.TaskManager.model.User;
 import com.hcl.TaskManager.repository.TaskRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Collections;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.log4j.Logger; 
@@ -61,9 +58,11 @@ public class TaskService {
     	task.setTaskName(taskName);
     	return taskRepository.save(task);
     }
-    public void deleteTask(Integer taskId) {
+    public void deleteTask(Integer taskId,User user) {
     	Task task = taskRepository.findById(taskId);
-    	taskRepository.delete(task);	
+    	if(user.getId().equals(task.getUserId())) {
+    		taskRepository.delete(task);
+    	}
     }
     
 

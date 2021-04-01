@@ -18,17 +18,17 @@
                 type="Submit">Logout
         </button>
     </form>
-    <form th:action="@{/user/addTask}" method="get">
+    <form th:action="@{/user/addTask}" action="#" method="get">
         <button class="btn btn-md btn-danger btn-block" name="addTask"
                 type="Submit">Add a Task
         </button>
     </form>
-    <form th:action="@{/user/updateTask}" method="get">
+    <form th:action="@{/user/updateTask}" action="#" method="get">
         <label for="taskid" >Enter Task Id you want to Update:</label>
         <input type="number" id="taskid" name="taskid" required>
         <input type="Submit" value="Submit">
     </form>
-    <form th:action="@{/user/deleteTask}" method="get">
+    <form th:action="@{/user/deleteTask}" action="#" method="get">
         <label for="taskid2" >Enter Task Id you want to Delete:</label>
         <input type="number" id="taskid2" name="taskid2" required>
         <input type="Submit" value="Submit">
